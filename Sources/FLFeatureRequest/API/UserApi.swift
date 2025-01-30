@@ -9,6 +9,7 @@
 import Foundation
 import FirebaseDatabase
 
+@MainActor
 struct UserApi: RequestCreatable {
 
   static let ref = Database.database().reference().child("users")

@@ -4,21 +4,26 @@
 import PackageDescription
 
 let package = Package(
-    name: "FLFeatureRequest",
-    products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
-        .library(
-            name: "FLFeatureRequest",
-            targets: ["FLFeatureRequest"]),
-    ],
-    targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
-        .target(
-            name: "FLFeatureRequest"),
-        .testTarget(
-            name: "FLFeatureRequestTests",
-            dependencies: ["FLFeatureRequest"]
-        ),
-    ]
+	name: "FLFeatureRequest",
+	platforms: [.iOS(.v15), .macOS(.v12), .visionOS(.v1)],
+	products: [
+		.library(
+			name: "FLFeatureRequest",
+			targets: ["FLFeatureRequest"]),
+	],
+	dependencies: [
+		.package(url: "https://github.com/firebase/firebase-ios-sdk.git", .upToNextMajor(from: "11.1.0"))
+	],
+	targets: [
+		.target(
+			name: "FLFeatureRequest",
+			dependencies: [
+				.product(name: "FirebaseDatabase", package: "firebase-ios-sdk")
+			]
+		),
+		.testTarget(
+			name: "FLFeatureRequestTests",
+			dependencies: ["FLFeatureRequest"]
+		),
+	]
 )

@@ -13,35 +13,17 @@ import UIKit
 import SwiftUI
 import Combine
 
-public struct WishKit {
+public enum WishKit {
 
-  private static var subscribers: Set<AnyCancellable> = []
+	@MainActor static var apiKey = "my-fancy-api-key"
 
-  static var apiKey = "my-fancy-api-key"
+	@MainActor static var user = User()
 
-  static var user = User()
+	@MainActor public static var theme = Theme()
 
-  public static var theme = Theme()
+	@MainActor public static var config = Configuration()
 
-  public static var config = Configuration()
-
-#if canImport(UIKit) && !os(visionOS)
-  /// (UIKit) The WishList viewcontroller.
-  public static var viewController: UIViewController {
-    UIHostingController(rootView: WishlistViewIOS(wishModel: WishModel()))
-  }
-#endif
-
-  /// (SwiftUI) The WishList view.
-  public static var view: some View {
-#if os(macOS) || os(visionOS)
-    return WishlistContainer(wishModel: WishModel())
-#else
-    return WishlistViewIOS(wishModel: WishModel())
-#endif
-  }
-
-  public static func configure(with apiKey: String) {
+	@MainActor public static func configure(with apiKey: String) {
     WishKit.apiKey = apiKey
   }
 }
@@ -96,6 +78,8 @@ public struct Payment {
 // MARK: - Update User Logic
 
 extension WishKit {
+
+	@MainActor
   public static func updateUser(customID: String) {
 		let id = customID.replacingOccurrences(of: "[.#$\\[\\]]", with: "", options: .regularExpression)
     self.user.customID = id
@@ -103,21 +87,25 @@ extension WishKit {
     sendUserToBackend()
   }
 
+	@MainActor
   public static func updateUser(email: String) {
     self.user.email = email
     sendUserToBackend()
   }
 
+	@MainActor
   public static func updateUser(name: String) {
     self.user.name = name
     sendUserToBackend()
   }
 
+	@MainActor
 	public static func updateUser(payment: Payment) {
     self.user.payment = payment
     sendUserToBackend()
   }
 
+	@MainActor
   static func sendUserToBackend() {
     let request = user.createRequest()
     UserApi.updateUser(userRequest: request) { result in
