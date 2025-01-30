@@ -89,7 +89,6 @@ struct WishlistViewIOS: View {
 
 			ScrollView {
 				VStack {
-
 					if WishKit.config.buttons.segmentedControl.display == .show {
 						Spacer(minLength: 15)
 
@@ -154,7 +153,6 @@ struct WishlistViewIOS: View {
 		.navigationTitle(WishKit.config.localization.featureWishlist)
 		.navigationBarTitleDisplayMode(.inline)
 		.toolbar {
-
 			ToolbarItem(placement: .topBarLeading) {
 				getRefreshButton()
 			}
@@ -166,7 +164,7 @@ struct WishlistViewIOS: View {
 					}
 				}
 			}
-		}.onAppear(perform: wishModel.fetchList)
+		}
 	}
 
 	// MARK: - View

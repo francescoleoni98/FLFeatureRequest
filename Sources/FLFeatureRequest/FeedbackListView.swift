@@ -12,6 +12,8 @@ public struct FeedbackListView: View {
 
 	@Environment(\.dismiss) var dismiss
 
+	let wishModel = WishModel()
+
 	public init () { }
 
 	public var body: some View {
@@ -28,11 +30,14 @@ public struct FeedbackListView: View {
 
 	var list: some View {
 #if os(macOS) || os(visionOS)
-		WishlistContainer(wishModel: WishModel())
+		WishlistContainer(wishModel: wishModel)
 			.frame(width: 500, height: 400)
 #else
-		WishlistViewIOS(wishModel: WishModel())
+		WishlistViewIOS(wishModel: wishModel)
 			.navigationBarTitleDisplayMode(.inline)
+			.task {
+				await wishModel.fetchList()
+			}
 #endif
 	}
 }
