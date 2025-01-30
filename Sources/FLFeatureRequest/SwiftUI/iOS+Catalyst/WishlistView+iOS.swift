@@ -111,7 +111,7 @@ struct WishlistViewIOS: View {
 						}.transition(.opacity)
 					} else if !wishModel.hasFetched {
 						WKButton(
-							text: "Load features", action: {
+							text: String(localized: "Load features", bundle: .module), action: {
 								Task {
 									await wishModel.fetchList()
 								}

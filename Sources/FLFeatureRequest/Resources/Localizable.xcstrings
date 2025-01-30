@@ -1,0 +1,456 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
+    },
+    "%@" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@"
+          }
+        }
+      }
+    },
+    "Admin" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Amministratore"
+          }
+        }
+      }
+    },
+    "Approved" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Approvate"
+          }
+        }
+      }
+    },
+    "Cancel" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annulla"
+          }
+        }
+      }
+    },
+    "Close" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chiudi"
+          }
+        }
+      }
+    },
+    "Comments" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Commenti"
+          }
+        }
+      }
+    },
+    "Confirm" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conferma"
+          }
+        }
+      }
+    },
+    "Create Feature" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crea funzionalità"
+          }
+        }
+      }
+    },
+    "Describe the feature" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Descrivi la funzionalità"
+          }
+        }
+      }
+    },
+    "Description" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Descrizione"
+          }
+        }
+      }
+    },
+    "Detail" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dettagli"
+          }
+        }
+      }
+    },
+    "Done" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fatto"
+          }
+        }
+      }
+    },
+    "Email" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Email"
+          }
+        }
+      }
+    },
+    "Email (optional)" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Email (opzionale)"
+          }
+        }
+      }
+    },
+    "Email (required)" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Email (obbligatoria)"
+          }
+        }
+      }
+    },
+    "Feature name" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nome funzionalità"
+          }
+        }
+      }
+    },
+    "Feature Requests" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funzionalità Richieste"
+          }
+        }
+      }
+    },
+    "Implemented" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Implementate"
+          }
+        }
+      }
+    },
+    "Info" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Info"
+          }
+        }
+      }
+    },
+    "Load features" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Carica funzionalità"
+          }
+        }
+      }
+    },
+    "No feature requests, yet ✨" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessuna funzionalità richiesta, ancora ✨"
+          }
+        }
+      }
+    },
+    "Ok" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ok"
+          }
+        }
+      }
+    },
+    "optional" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "opzionale"
+          }
+        }
+      }
+    },
+    "Pending" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In sospeso"
+          }
+        }
+      }
+    },
+    "Please enter your email address." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Insierisci il tuo indirizzo email"
+          }
+        }
+      }
+    },
+    "Powered by" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Powered by"
+          }
+        }
+      }
+    },
+    "Request a feature" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Richiedi una funzionalità"
+          }
+        }
+      }
+    },
+    "Requested" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Richieste"
+          }
+        }
+      }
+    },
+    "required" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "obbligatorio"
+          }
+        }
+      }
+    },
+    "Save" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salva"
+          }
+        }
+      }
+    },
+    "Something went wrong during your vote. Try again later." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qualcosa è andato storto durante il voto. Provo ancora."
+          }
+        }
+      }
+    },
+    "Something went wrong during your vote. Try again later.\n\n%@" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qualcosa è andato storto durante il voto. Provo ancora.\n\n%@"
+          }
+        }
+      }
+    },
+    "Successfully created" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funzionalità creata"
+          }
+        }
+      }
+    },
+    "Title" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Titolo"
+          }
+        }
+      }
+    },
+    "Title of the feature.." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Titolo della funzionalità…"
+          }
+        }
+      }
+    },
+    "Title/Description cannot be empty." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Titolo/Descrizione non può essere vuoto."
+          }
+        }
+      }
+    },
+    "Upvote" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vota"
+          }
+        }
+      }
+    },
+    "User" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utente"
+          }
+        }
+      }
+    },
+    "Votes" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Voti"
+          }
+        }
+      }
+    },
+    "Write a comment.." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scrivi un commento…"
+          }
+        }
+      }
+    },
+    "Wrong email format." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Formato email non corretto."
+          }
+        }
+      }
+    },
+    "You can not vote for a feature that is already implemented." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non puoi votare per una funzionalità che è già stata implementata."
+          }
+        }
+      }
+    },
+    "You can only vote once." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puoi votare solo una volta."
+          }
+        }
+      }
+    },
+    "You cannot vote for your own feature request." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non puoi votare per una funzionalità che hai richiesto tu."
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

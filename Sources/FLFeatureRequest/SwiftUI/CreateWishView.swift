@@ -11,342 +11,346 @@ import Combine
 
 struct CreateWishView: View {
 
-    @Environment(\.presentationMode) var presentationMode
+	@Environment(\.presentationMode) var presentationMode
 
-    @Environment(\.colorScheme)
-    private var colorScheme
+	@Environment(\.colorScheme)
+	private var colorScheme
 
-    @ObservedObject
-    private var alertModel = AlertModel()
+	@Environment(\.dismiss)
+	private var dismiss
 
-    @State
-    private var titleCharCount = 0
+	@ObservedObject
+	private var alertModel = AlertModel()
 
-    @State
-    private var titleText = ""
+	@State
+	private var titleCharCount = 0
 
-    @State
-    private var emailText = ""
+	@State
+	private var titleText = ""
 
-    @State
-    private var descriptionText = ""
+	@State
+	private var emailText = ""
 
-    @State
-    private var isButtonDisabled = true
+	@State
+	private var descriptionText = ""
 
-    @State
-    private var isButtonLoading: Bool? = false
+	@State
+	private var isButtonDisabled = true
 
-    let createActionCompletion: () -> Void
+	@State
+	private var isButtonLoading: Bool? = false
 
-    var closeAction: (() -> Void)? = nil
+	let createActionCompletion: () -> Void
 
-    var saveButtonSize: CGSize {
-        #if os(macOS) || os(visionOS)
-            return CGSize(width: 100, height: 30)
-        #else
-            return CGSize(width: 200, height: 45)
-        #endif
-    }
+	var closeAction: (() -> Void)? = nil
 
-    var body: some View {
-        VStack(spacing: 0) {
-            if showCloseButton() {
-                HStack {
-                    Spacer()
-                  WishCloseButton(closeAction: { closeAction?() })
-                }
-            }
+	var saveButtonSize: CGSize {
+#if os(macOS) || os(visionOS)
+		return CGSize(width: 100, height: 30)
+#else
+		return CGSize(width: 200, height: 45)
+#endif
+	}
 
-            ScrollView {
-                VStack(spacing: 15) {
-                    VStack(spacing: 0) {
-                        HStack {
-                            Text(WishKit.config.localization.title)
-                            Spacer()
-//                            Text("\(titleText.count)/50")
-                        }
-                        .font(.body)
-                        .padding([.leading, .trailing, .bottom], 5)
+	var body: some View {
+		VStack(spacing: 0) {
+			if showCloseButton() {
+				HStack {
+					Spacer()
+					WishCloseButton(closeAction: { closeAction?() })
+				}
+			}
 
-                        TextField("Feature name", text: $titleText)
-                            .padding(10)
-                            .textFieldStyle(.plain)
-                            .foregroundColor(textColor)
-                            .background(fieldBackgroundColor)
-                            .clipShape(RoundedRectangle(cornerRadius: WishKit.config.cornerRadius, style: .continuous))
-                            .onReceive(Just(titleText)) { _ in handleTitleAndDescriptionChange() }
-                    }
+			ScrollView {
+				VStack(spacing: 15) {
+					VStack(spacing: 0) {
+						HStack {
+							Text(WishKit.config.localization.title)
+							Spacer()
+							//                            Text("\(titleText.count)/50")
+						}
+						.font(.body)
+						.padding([.leading, .trailing, .bottom], 5)
 
-                    VStack(spacing: 0) {
-                        HStack {
-                            Text(WishKit.config.localization.description)
-                            Spacer()
-//                            Text("\(descriptionText.count)/500")
-                        }
-                        .font(.body)
-                        .padding([.leading, .trailing, .bottom], 5)
+						TextField(String(localized: "Feature name", bundle: .module), text: $titleText)
+							.padding(10)
+							.textFieldStyle(.plain)
+							.foregroundColor(textColor)
+							.background(fieldBackgroundColor)
+							.clipShape(RoundedRectangle(cornerRadius: WishKit.config.cornerRadius, style: .continuous))
+							.onReceive(Just(titleText)) { _ in handleTitleAndDescriptionChange() }
+					}
 
-											if #available(iOS 16, *) {
-												TextEditor(text: $descriptionText)
-													.padding([.leading, .trailing], 5)
-													.padding([.top, .bottom], 10)
-													.lineSpacing(3)
-													.frame(height: 200)
-													.foregroundColor(textColor)
-													.scrollContentBackgroundCompat(.hidden)
-													.background(fieldBackgroundColor)
-													.clipShape(RoundedRectangle(cornerRadius: WishKit.config.cornerRadius, style: .continuous))
-													.onReceive(Just(descriptionText)) { _ in handleTitleAndDescriptionChange() }
-											} else {
-												TextField("Describe the feature", text: $descriptionText)
-													.padding([.leading, .trailing], 15)
-													.padding([.top, .bottom], 10)
-													.foregroundColor(textColor)
-													.background(fieldBackgroundColor)
-													.clipShape(RoundedRectangle(cornerRadius: WishKit.config.cornerRadius, style: .continuous))
-													.onReceive(Just(descriptionText)) { _ in handleTitleAndDescriptionChange() }
-											}
-                    }
+					VStack(spacing: 0) {
+						HStack {
+							Text(WishKit.config.localization.description)
+							Spacer()
+							//                            Text("\(descriptionText.count)/500")
+						}
+						.font(.body)
+						.padding([.leading, .trailing, .bottom], 5)
 
-                    if WishKit.config.emailField != .none {
-                        VStack(spacing: 0) {
-                            HStack {
-                                if WishKit.config.emailField == .optional {
-                                    Text(WishKit.config.localization.emailOptional)
-                                        .font(.body)
-                                        .padding([.leading, .trailing, .bottom], 5)
-                                }
+						if #available(iOS 16, *) {
+							TextEditor(text: $descriptionText)
+								.padding([.leading, .trailing], 5)
+								.padding([.top, .bottom], 10)
+								.lineSpacing(3)
+								.frame(height: 200)
+								.foregroundColor(textColor)
+								.scrollContentBackgroundCompat(.hidden)
+								.background(fieldBackgroundColor)
+								.clipShape(RoundedRectangle(cornerRadius: WishKit.config.cornerRadius, style: .continuous))
+								.onReceive(Just(descriptionText)) { _ in handleTitleAndDescriptionChange() }
+						} else {
+							TextField(String(localized: "Describe the feature", bundle: .module), text: $descriptionText)
+								.padding([.leading, .trailing], 15)
+								.padding([.top, .bottom], 10)
+								.foregroundColor(textColor)
+								.background(fieldBackgroundColor)
+								.clipShape(RoundedRectangle(cornerRadius: WishKit.config.cornerRadius, style: .continuous))
+								.onReceive(Just(descriptionText)) { _ in handleTitleAndDescriptionChange() }
+						}
+					}
 
-                                if WishKit.config.emailField == .required {
-                                    Text(WishKit.config.localization.emailRequired)
-                                        .font(.caption2)
-                                        .padding([.leading, .trailing, .bottom], 5)
-                                }
+					if WishKit.config.emailField != .none {
+						VStack(spacing: 0) {
+							HStack {
+								if WishKit.config.emailField == .optional {
+									Text(WishKit.config.localization.emailOptional)
+										.font(.body)
+										.padding([.leading, .trailing, .bottom], 5)
+								}
 
-                                Spacer()
-                            }
+								if WishKit.config.emailField == .required {
+									Text(WishKit.config.localization.emailRequired)
+										.font(.caption2)
+										.padding([.leading, .trailing, .bottom], 5)
+								}
 
-                            TextField("Email", text: $emailText)
-                                .padding(10)
-                                .textFieldStyle(.plain)
-                                .foregroundColor(textColor)
-                                .background(fieldBackgroundColor)
-                                .clipShape(RoundedRectangle(cornerRadius: WishKit.config.cornerRadius, style: .continuous))
-                        }
-                    }
+								Spacer()
+							}
 
-                    #if os(macOS) || os(visionOS)
-                    Spacer()
-                    #endif
+							TextField("Email", text: $emailText)
+								.padding(10)
+								.textFieldStyle(.plain)
+								.foregroundColor(textColor)
+								.background(fieldBackgroundColor)
+								.clipShape(RoundedRectangle(cornerRadius: WishKit.config.cornerRadius, style: .continuous))
+						}
+					}
 
-                    WKButton(
-                        text: WishKit.config.localization.save,
-                        action: submitAction,
-                        style: .primary,
-                        isLoading: $isButtonLoading,
-                        size: saveButtonSize
-                    )
-                    .disabled(isButtonDisabled)
-                    .alert(isPresented: $alertModel.showAlert) {
+#if os(macOS) || os(visionOS)
+					Spacer()
+#endif
 
-                        switch alertModel.alertReason {
-                        case .successfullyCreated:
-                            let button = Alert.Button.default(
-                                Text(WishKit.config.localization.ok),
-                                action: {
-                                    createActionCompletion()
-                                    dismissAction()
-                                }
-                            )
+					WKButton(
+						text: WishKit.config.localization.save,
+						action: submitAction,
+						style: .primary,
+						isLoading: $isButtonLoading,
+						size: saveButtonSize
+					)
+					.disabled(isButtonDisabled)
+					.alert(isPresented: $alertModel.showAlert) {
 
-                            return Alert(
-                                title: Text(WishKit.config.localization.info),
-                                message: Text(WishKit.config.localization.successfullyCreated),
-                                dismissButton: button
-                            )
-                        case .createReturnedError(let errorText):
-                            let button = Alert.Button.default(Text(WishKit.config.localization.ok))
+						switch alertModel.alertReason {
+						case .successfullyCreated:
+							let button = Alert.Button.default(
+								Text(WishKit.config.localization.ok),
+								action: {
+									createActionCompletion()
+									dismissAction()
+								}
+							)
 
-                            return Alert(
-                                title: Text(WishKit.config.localization.info),
-                                message: Text(errorText),
-                                dismissButton: button
-                            )
-                        case .emailRequired:
-                            let button = Alert.Button.default(Text(WishKit.config.localization.ok))
+							return Alert(
+								title: Text(WishKit.config.localization.info),
+								message: Text(WishKit.config.localization.successfullyCreated),
+								dismissButton: button
+							)
+						case .createReturnedError(let errorText):
+							let button = Alert.Button.default(Text(WishKit.config.localization.ok))
 
-                            return Alert(
-                                title: Text(WishKit.config.localization.info),
-                                message: Text(WishKit.config.localization.emailRequiredText),
-                                dismissButton: button
-                            )
-                        case .emailFormatWrong:
-                            let button = Alert.Button.default(Text(WishKit.config.localization.ok))
+							return Alert(
+								title: Text(WishKit.config.localization.info),
+								message: Text(errorText),
+								dismissButton: button
+							)
+						case .emailRequired:
+							let button = Alert.Button.default(Text(WishKit.config.localization.ok))
 
-                            return Alert(
-                                title: Text(WishKit.config.localization.info),
-                                message: Text(WishKit.config.localization.emailFormatWrongText),
-                                dismissButton: button
-                            )
-                        case .none:
-                            let button = Alert.Button.default(Text(WishKit.config.localization.ok))
-                            return Alert(title: Text(""), dismissButton: button)
-                        default:
-                            let button = Alert.Button.default(Text(WishKit.config.localization.ok))
-                            return Alert(title: Text(""), dismissButton: button)
-                        }
+							return Alert(
+								title: Text(WishKit.config.localization.info),
+								message: Text(WishKit.config.localization.emailRequiredText),
+								dismissButton: button
+							)
+						case .emailFormatWrong:
+							let button = Alert.Button.default(Text(WishKit.config.localization.ok))
 
-                    }
-                }
-                .frame(maxWidth: 700)
-                .padding()
+							return Alert(
+								title: Text(WishKit.config.localization.info),
+								message: Text(WishKit.config.localization.emailFormatWrongText),
+								dismissButton: button
+							)
+						case .none:
+							let button = Alert.Button.default(Text(WishKit.config.localization.ok))
+							return Alert(title: Text(""), dismissButton: button)
+						default:
+							let button = Alert.Button.default(Text(WishKit.config.localization.ok))
+							return Alert(title: Text(""), dismissButton: button)
+						}
 
-                #if os(iOS)
-                Spacer()
-                #endif
-            }
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(backgroundColor)
-        .ignoresSafeArea(edges: [.leading, .trailing])
-        .toolbarKeyboardDoneButton()
-    }
+					}
+				}
+				.frame(maxWidth: 700)
+				.padding()
 
-    private func showCloseButton() -> Bool {
-        #if os(macOS) || os(visionOS)
-            return true
-        #else
-            return false
-        #endif
-    }
+#if os(iOS)
+				Spacer()
+#endif
+			}
+		}
+		.frame(maxWidth: .infinity, maxHeight: .infinity)
+		.background(backgroundColor)
+		.ignoresSafeArea(edges: [.leading, .trailing])
+		.toolbarKeyboardDoneButton()
+	}
 
-    private func handleTitleAndDescriptionChange() {
+	private func showCloseButton() -> Bool {
+#if os(macOS) || os(visionOS)
+		return true
+#else
+		return false
+#endif
+	}
 
-        // Keep characters within limits
-//        let titleLimit = 50
-//        let descriptionLimit = 500
+	private func handleTitleAndDescriptionChange() {
 
-//        if titleText.count > titleLimit {
-//            titleText = String(titleText.prefix(titleLimit))
-//        }
+		// Keep characters within limits
+		//        let titleLimit = 50
+		//        let descriptionLimit = 500
 
-//        if descriptionText.count > descriptionLimit {
-//            descriptionText = String(descriptionText.prefix(descriptionLimit))
-//        }
+		//        if titleText.count > titleLimit {
+		//            titleText = String(titleText.prefix(titleLimit))
+		//        }
 
-        // Enable/Disable button
-        isButtonDisabled = titleText.isEmpty || descriptionText.isEmpty
-    }
+		//        if descriptionText.count > descriptionLimit {
+		//            descriptionText = String(descriptionText.prefix(descriptionLimit))
+		//        }
 
-    private func submitAction() {
+		// Enable/Disable button
+		isButtonDisabled = titleText.isEmpty || descriptionText.isEmpty
+	}
 
-        if WishKit.config.emailField == .required && emailText.isEmpty {
-            alertModel.alertReason = .emailRequired
-            alertModel.showAlert = true
-            return
-        }
+	private func submitAction() {
+		if WishKit.config.emailField == .required && emailText.isEmpty {
+			alertModel.alertReason = .emailRequired
+			alertModel.showAlert = true
+			return
+		}
 
-        let isInvalidEmailFormat = (emailText.count < 6 || !emailText.contains("@") || !emailText.contains("."))
-        if !emailText.isEmpty && isInvalidEmailFormat {
-            alertModel.alertReason = .emailFormatWrong
-            alertModel.showAlert = true
-            return
-        }
+		let isInvalidEmailFormat = (emailText.count < 6 || !emailText.contains("@") || !emailText.contains("."))
+		if !emailText.isEmpty && isInvalidEmailFormat {
+			alertModel.alertReason = .emailFormatWrong
+			alertModel.showAlert = true
+			return
+		}
 
-        isButtonLoading = true
+		isButtonLoading = true
 
-        let createRequest = CreateWishRequest(title: titleText, description: descriptionText, email: emailText)
-        WishApi.createWish(createRequest: createRequest) { result in
-            isButtonLoading = false
-            DispatchQueue.main.async {
-                switch result {
-                case .success:
-                    alertModel.alertReason = .successfullyCreated
-                    alertModel.showAlert = true
-                case .failure(let error):
-                    alertModel.alertReason = .createReturnedError(error.localizedDescription)
-                    alertModel.showAlert = true
-                }
-            }
-        }
-    }
+		let createRequest = CreateWishRequest(title: titleText, description: descriptionText, email: emailText)
+		WishApi.createWish(createRequest: createRequest) { result in
+			isButtonLoading = false
+			DispatchQueue.main.async {
+				switch result {
+				case .success:
+//					alertModel.alertReason = .successfullyCreated
+//					alertModel.showAlert = true
+					dismiss()
 
-    private func dismissAction() {
-        presentationMode.wrappedValue.dismiss()
-    }
+				case .failure(let error):
+					alertModel.alertReason = .createReturnedError(error.localizedDescription)
+					alertModel.showAlert = true
+				}
+			}
+		}
+	}
+
+	private func dismissAction() {
+		presentationMode.wrappedValue.dismiss()
+	}
 }
 
 // MARK: - Color Scheme
 
 extension CreateWishView {
 
-    var textColor: Color {
-        switch colorScheme {
-        case .light:
-            if let color = WishKit.theme.textColor {
-                return color.light
-            }
+	var textColor: Color {
+		switch colorScheme {
+		case .light:
+			if let color = WishKit.theme.textColor {
+				return color.light
+			}
 
-            return .black
-        case .dark:
-            if let color = WishKit.theme.textColor {
-                return color.dark
-            }
+			return .black
+		case .dark:
+			if let color = WishKit.theme.textColor {
+				return color.dark
+			}
 
-            return .white
-				@unknown default:
-					if let color = WishKit.theme.textColor {
-							return color.light
-					}
+			return .white
+		@unknown default:
+			if let color = WishKit.theme.textColor {
+				return color.light
+			}
 
-					return .black
-				}
-    }
+			return .black
+		}
+	}
 
-    var backgroundColor: Color {
-        switch colorScheme {
-        case .light:
-            if let color = WishKit.theme.tertiaryColor {
-                return color.light
-            }
+	var backgroundColor: Color {
+		switch colorScheme {
+		case .light:
+			if let color = WishKit.theme.tertiaryColor {
+				return color.light
+			}
 
-            return PrivateTheme.systemBackgroundColor.light
-        case .dark:
-            if let color = WishKit.theme.tertiaryColor {
-                return color.dark
-            }
+			return PrivateTheme.systemBackgroundColor.light
+		case .dark:
+			if let color = WishKit.theme.tertiaryColor {
+				return color.dark
+			}
 
-            return PrivateTheme.systemBackgroundColor.dark
-        @unknown default:
-            if let color = WishKit.theme.tertiaryColor {
-                return color.light
-            }
+			return PrivateTheme.systemBackgroundColor.dark
+		@unknown default:
+			if let color = WishKit.theme.tertiaryColor {
+				return color.light
+			}
 
-            return PrivateTheme.systemBackgroundColor.light
-        }
-    }
+			return PrivateTheme.systemBackgroundColor.light
+		}
+	}
 
-    var fieldBackgroundColor: Color {
-        switch colorScheme {
-        case .light:
-            if let color = WishKit.theme.secondaryColor {
-                return color.light
-            }
+	var fieldBackgroundColor: Color {
+		switch colorScheme {
+		case .light:
+			if let color = WishKit.theme.secondaryColor {
+				return color.light
+			}
 
-            return PrivateTheme.elementBackgroundColor.light
-        case .dark:
-            if let color = WishKit.theme.secondaryColor {
-                return color.dark
-            }
+			return PrivateTheme.elementBackgroundColor.light
+		case .dark:
+			if let color = WishKit.theme.secondaryColor {
+				return color.dark
+			}
 
-            return PrivateTheme.elementBackgroundColor.dark
-        @unknown default:
-            if let color = WishKit.theme.tertiaryColor {
-                return color.light
-            }
+			return PrivateTheme.elementBackgroundColor.dark
+		@unknown default:
+			if let color = WishKit.theme.tertiaryColor {
+				return color.light
+			}
 
-            return PrivateTheme.systemBackgroundColor.light
-        }
-    }
+			return PrivateTheme.systemBackgroundColor.light
+		}
+	}
 }

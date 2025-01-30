@@ -5,6 +5,7 @@ import PackageDescription
 
 let package = Package(
 	name: "FLFeatureRequest",
+	defaultLocalization: "en",
 	platforms: [.iOS(.v15), .macOS(.v12), .visionOS(.v1)],
 	products: [
 		.library(
@@ -19,7 +20,8 @@ let package = Package(
 			name: "FLFeatureRequest",
 			dependencies: [
 				.product(name: "FirebaseDatabase", package: "firebase-ios-sdk")
-			]
+			],
+			resources: [.process("Resources")]
 		),
 		.testTarget(
 			name: "FLFeatureRequestTests",
