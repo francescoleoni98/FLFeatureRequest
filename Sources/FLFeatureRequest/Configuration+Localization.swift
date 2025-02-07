@@ -171,7 +171,7 @@ extension Configuration {
 				wishlist: String(localized: "Feature Requests", bundle: .module),
 				save: String(localized: "Save", bundle: .module),
 				title: String(localized: "Title", bundle: .module),
-				description: String(localized: "Description", bundle: .module),
+				description: String(localized: "Description (Optional)", bundle: .module),
 				upvote: String(localized: "Upvote", bundle: .module),
 				info: String(localized: "Info", bundle: .module),
 				youCanOnlyVoteOnce: String(localized: "You can only vote once.", bundle: .module),

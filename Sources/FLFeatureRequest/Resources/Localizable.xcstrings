@@ -102,11 +102,22 @@
       }
     },
     "Description" : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Descrizione"
+          }
+        }
+      }
+    },
+    "Description (Optional)" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Descrizione (Opzionale)"
           }
         }
       }

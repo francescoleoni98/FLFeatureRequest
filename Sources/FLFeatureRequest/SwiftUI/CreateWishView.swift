@@ -239,7 +239,7 @@ struct CreateWishView: View {
 		//        }
 
 		// Enable/Disable button
-		isButtonDisabled = titleText.isEmpty || descriptionText.isEmpty
+		isButtonDisabled = titleText.isEmpty //|| descriptionText.isEmpty
 	}
 
 	private func submitAction() {
