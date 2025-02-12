@@ -98,6 +98,11 @@ struct WishlistViewIOS: View {
 
 					Spacer(minLength: 15)
 
+					if selectedWishState == .approved {
+						Text("Vote (▲) the feature you want to see on the app or add a new one.")
+							.font(.footnote)
+					}
+
 					if getList().count > 0 {
 						ForEach(getList()) { wish in
 							NavigationLink(destination: {

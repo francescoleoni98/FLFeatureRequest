@@ -11,26 +11,28 @@ import Foundation
 import SwiftUI
 
 @MainActor
-final class WishModel: ObservableObject {
+public final class WishModel: ObservableObject {
 
 	@Published
-	var approvedWishlist: [WishResponse] = []
+	public var approvedWishlist: [WishResponse] = []
 
 	@Published
-	var implementedWishlist: [WishResponse] = []
+	public var implementedWishlist: [WishResponse] = []
 
 	@Published
 	var shouldShowWatermark: Bool = false
 
 	@Published
-	var isLoading: Bool = false
+	public var isLoading: Bool = false
 
 	// Used to differentiate empty list from fetch vs. from initial instance creation.
 	@Published
-	var hasFetched: Bool = false
+	public var hasFetched: Bool = false
 
+	public init() { }
+	
 	@MainActor
-	func fetchList(completion: (() -> ())? = nil) {
+	public func fetchList(completion: (() -> ())? = nil) {
 		isLoading = true
 
 		WishApi.fetchWishList { result in
