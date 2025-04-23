@@ -1,9 +1,9 @@
 //
 //  AddButton.swift
-//  wishkit-ios
+//  FLFeatureReequest
 //
-//  Created by Martin Lasek on 3/8/23.
-//  Copyright © 2023 Martin Lasek. All rights reserved.
+//  Created by Francesco Leoni on 3/8/23.
+//  Copyright © 2025 Francesco Leoni. All rights reserved.
 //
 
 import SwiftUI
@@ -32,13 +32,13 @@ struct AddButton: View {
 				.font(.system(size: 22, weight: .bold))
 				.frame(width: size.width, height: size.height)
 				.foregroundColor(addButtonTextColor)
-				.background(WishKit.theme.primaryColor)
+				.background(FLFeatureRequest.theme.primaryColor)
 				.clipShape(.circle)
 		}
 		.buttonStyle(.plain)
 		.buttonStyle(.roundButtonStyle)
 		.frame(width: size.width, height: size.height)
-		.background(WishKit.theme.primaryColor)
+		.background(FLFeatureRequest.theme.primaryColor)
 		.clipShape(.circle)
 		.shadow(color: .black.opacity(0.33), radius: 5, x: 0, y: 5)
 #else
@@ -48,7 +48,7 @@ struct AddButton: View {
 				.foregroundColor(addButtonTextColor)
 		}
 		.frame(width: size.width, height: size.height)
-		.background(WishKit.theme.primaryColor)
+		.background(FLFeatureRequest.theme.primaryColor)
 		.clipShape(.circle)
 		.shadow(color: .black.opacity(1/4), radius: 3, x: 0, y: 3)
 #endif
@@ -57,11 +57,11 @@ struct AddButton: View {
 	var addButtonTextColor: Color {
 		switch colorScheme {
 		case .light:
-			return WishKit.config.buttons.addButton.textColor.light
+			return FLFeatureRequest.config.buttons.addButton.textColor.light
 		case .dark:
-			return WishKit.config.buttons.addButton.textColor.dark
+			return FLFeatureRequest.config.buttons.addButton.textColor.dark
 		@unknown default:
-			return WishKit.config.buttons.addButton.textColor.light
+			return FLFeatureRequest.config.buttons.addButton.textColor.light
 		}
 	}
 }
@@ -72,7 +72,7 @@ struct RoundButtonStyle: ButtonStyle {
 		configuration
 			.label
 			.foregroundColor(configuration.isPressed ? .white.opacity(0.66) : .white)
-			.background(WishKit.theme.primaryColor)
+			.background(FLFeatureRequest.theme.primaryColor)
 	}
 }
 

@@ -1,9 +1,9 @@
 //
 //  AlertModel.swift
-//  wishkit-ios
+//  FLFeatureReequest
 //
-//  Created by Martin Lasek on 9/27/23.
-//  Copyright © 2023 Martin Lasek. All rights reserved.
+//  Created by Francesco Leoni on 9/27/23.
+//  Copyright © 2025 Francesco Leoni. All rights reserved.
 //
 
 import SwiftUI

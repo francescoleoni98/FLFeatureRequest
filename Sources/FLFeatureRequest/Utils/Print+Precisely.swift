@@ -1,9 +1,9 @@
 //
 //  Print+Precisely.swift
-//  wishkit-ios
+//  FLFeatureReequest
 //
-//  Created by Martin Lasek on 2/9/23.
-//  Copyright © 2023 Martin Lasek. All rights reserved.
+//  Created by Francesco Leoni on 2/9/23.
+//  Copyright © 2025 Francesco Leoni. All rights reserved.
 //
 
 /// More verbose SUCCESS message print function.
@@ -45,8 +45,7 @@ fileprivate enum Kind: String {
   case debug = "🐛"
 }
 
-/// Makes sure in case of "WishlistVC" and "WishlistVC.Type"
-/// that in both cases "WishlistVC" is returned.
+/// Makes sure in case of "ControllerVC" and "ControllerVC.Type" that in both cases "ControllerVC" is returned.
 fileprivate func cleanUp<T>(type: T) -> String {
   let uncleanedType = String(describing: T.self)
   let typeWordList = uncleanedType.split(separator: ".")

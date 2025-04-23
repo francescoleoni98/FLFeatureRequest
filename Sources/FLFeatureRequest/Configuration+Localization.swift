@@ -1,9 +1,9 @@
 //
 //  Configuration+Localization.swift
-//  wishkit-ios
+//  FLFeatureReequest
 //
-//  Created by Martin Lasek on 4/13/23.
-//  Copyright © 2023 Martin Lasek. All rights reserved.
+//  Created by Francesco Leoni on 4/13/23.
+//  Copyright © 2025 Francesco Leoni. All rights reserved.
 //
 
 extension Configuration {
@@ -18,7 +18,7 @@ extension Configuration {
 
 		public var implemented: String
 
-		public var wishlist: String
+		public var featurelist: String
 
 		public var save: String
 
@@ -32,9 +32,9 @@ extension Configuration {
 
 		public var youCanOnlyVoteOnce: String
 
-		public var youCanNotVoteForAnImplementedWish: String
+		public var youCanNotVoteForAnImplementedFeature: String
 
-		public var youCanNotVoteForYourOwnWish: String
+		public var youCanNotVoteForYourOwnFeature: String
 
 		public var poweredBy: String
 
@@ -44,7 +44,7 @@ extension Configuration {
 
 		public var detail: String
 
-		public var featureWishlist: String
+		public var featureFeaturelist: String
 
 		public var confirm: String
 
@@ -52,7 +52,7 @@ extension Configuration {
 
 		public var ok: String
 
-		public var titleOfWish: String
+		public var titleOfFeature: String
 
 		public var titleDescriptionCannotBeEmpty: String
 
@@ -60,7 +60,7 @@ extension Configuration {
 
 		public var close: String
 
-		public var createWish: String
+		public var createFeature: String
 
 		public var optional: String
 
@@ -89,28 +89,28 @@ extension Configuration {
 			pending: String = Localization.default().pending,
 			approved: String = Localization.default().approved,
 			implemented: String = Localization.default().implemented,
-			wishlist: String = Localization.default().wishlist,
+			featurelist: String = Localization.default().featurelist,
 			save: String = Localization.default().save,
 			title: String = Localization.default().title,
 			description: String = Localization.default().description,
 			upvote: String = Localization.default().upvote,
 			info: String = Localization.default().info,
 			youCanOnlyVoteOnce: String = Localization.default().youCanOnlyVoteOnce,
-			youCanNotVoteForAnImplementedWish: String = Localization.default().youCanNotVoteForAnImplementedWish,
-			youCanNotVoteForYourOwnWish: String = Localization.default().youCanNotVoteForYourOwnWish,
+			youCanNotVoteForAnImplementedFeature: String = Localization.default().youCanNotVoteForAnImplementedFeature,
+			youCanNotVoteForYourOwnFeature: String = Localization.default().youCanNotVoteForYourOwnFeature,
 			poweredBy: String = Localization.default().poweredBy,
 			successfullyCreated: String = Localization.default().successfullyCreated,
 			done: String = Localization.default().done,
 			detail: String = Localization.default().detail,
-			featureWishlist: String = Localization.default().featureWishlist,
+			featureFeaturelist: String = Localization.default().featureFeaturelist,
 			confirm: String = Localization.default().confirm,
 			cancel: String = Localization.default().cancel,
 			ok: String = Localization.default().ok,
-			titleOfWish: String = Localization.default().titleOfWish,
+			titleOfFeature: String = Localization.default().titleOfFeature,
 			titleDescriptionCannotBeEmpty: String = Localization.default().titleDescriptionCannotBeEmpty,
 			votes: String = Localization.default().votes,
 			close: String = Localization.default().close,
-			createWish: String = Localization.default().createWish,
+			createFeature: String = Localization.default().createFeature,
 			optional: String = Localization.default().optional,
 			required: String = Localization.default().required,
 			emailRequiredText: String = Localization.default().emailRequiredText,
@@ -127,28 +127,28 @@ extension Configuration {
 			self.pending = pending
 			self.approved = approved
 			self.implemented = implemented
-			self.wishlist = wishlist
+			self.featurelist = featurelist
 			self.save = save
 			self.title = title
 			self.description = description
 			self.upvote = upvote
 			self.info = info
 			self.youCanOnlyVoteOnce = youCanOnlyVoteOnce
-			self.youCanNotVoteForAnImplementedWish = youCanNotVoteForAnImplementedWish
-			self.youCanNotVoteForYourOwnWish = youCanNotVoteForYourOwnWish
+			self.youCanNotVoteForAnImplementedFeature = youCanNotVoteForAnImplementedFeature
+			self.youCanNotVoteForYourOwnFeature = youCanNotVoteForYourOwnFeature
 			self.poweredBy = poweredBy
 			self.successfullyCreated = successfullyCreated
 			self.done = done
 			self.detail = detail
-			self.featureWishlist = featureWishlist
+			self.featureFeaturelist = featureFeaturelist
 			self.confirm = confirm
 			self.cancel = cancel
 			self.ok = ok
-			self.titleOfWish = titleOfWish
+			self.titleOfFeature = titleOfFeature
 			self.titleDescriptionCannotBeEmpty = titleDescriptionCannotBeEmpty
 			self.votes = votes
 			self.close = close
-			self.createWish = createWish
+			self.createFeature = createFeature
 			self.optional = optional
 			self.required = required
 			self.emailRequiredText = emailRequiredText
@@ -168,28 +168,28 @@ extension Configuration {
 				pending: String(localized: "Pending", bundle: .module),
 				approved: String(localized: "Approved", bundle: .module),
 				implemented: String(localized: "Implemented", bundle: .module),
-				wishlist: String(localized: "Feature Requests", bundle: .module),
+				featurelist: String(localized: "Feature Requests", bundle: .module),
 				save: String(localized: "Save", bundle: .module),
 				title: String(localized: "Title", bundle: .module),
 				description: String(localized: "Description (Optional)", bundle: .module),
 				upvote: String(localized: "Upvote", bundle: .module),
 				info: String(localized: "Info", bundle: .module),
 				youCanOnlyVoteOnce: String(localized: "You can only vote once.", bundle: .module),
-				youCanNotVoteForAnImplementedWish: String(localized: "You can not vote for a feature that is already implemented.", bundle: .module),
-				youCanNotVoteForYourOwnWish: String(localized: "You cannot vote for your own feature request.", bundle: .module),
+				youCanNotVoteForAnImplementedFeature: String(localized: "You can not vote for a feature that is already implemented.", bundle: .module),
+				youCanNotVoteForYourOwnFeature: String(localized: "You cannot vote for your own feature request.", bundle: .module),
 				poweredBy: String(localized: "Powered by", bundle: .module),
 				successfullyCreated: String(localized: "Successfully created", bundle: .module),
 				done: String(localized: "Done", bundle: .module),
 				detail: String(localized: "Detail", bundle: .module),
-				featureWishlist: String(localized: "Feature Requests", bundle: .module),
+				featureFeaturelist: String(localized: "Feature Requests", bundle: .module),
 				confirm: String(localized: "Confirm", bundle: .module),
 				cancel: String(localized: "Cancel", bundle: .module),
 				ok: String(localized: "Ok", bundle: .module),
-				titleOfWish: String(localized: "Title of the feature..", bundle: .module),
+				titleOfFeature: String(localized: "Title of the feature..", bundle: .module),
 				titleDescriptionCannotBeEmpty: String(localized: "Title/Description cannot be empty.", bundle: .module),
 				votes: String(localized: "Votes", bundle: .module),
 				close: String(localized: "Close", bundle: .module),
-				createWish: String(localized: "Create Feature", bundle: .module),
+				createFeature: String(localized: "Create Feature", bundle: .module),
 				optional: String(localized: "optional", bundle: .module),
 				required: String(localized: "required", bundle: .module),
 				emailRequiredText: String(localized: "Please enter your email address.", bundle: .module),

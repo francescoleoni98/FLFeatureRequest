@@ -1,18 +1,18 @@
 //
 //  Configuration.swift
-//  wishkit-ios
+//  FLFeatureReequest
 //
-//  Created by Martin Lasek on 4/25/23.
-//  Copyright © 2023 Martin Lasek. All rights reserved.
+//  Created by Francesco Leoni on 4/25/23.
+//  Copyright © 2025 Francesco Leoni. All rights reserved.
 //
 
 import SwiftUI
 
 extension Configuration {
-    public struct TabBar {
-
-        public var image = Image(systemName: "lightbulb")
-        
-        public var selectedImage = Image(systemName: "lightbulb.fill")
-    }
+	public struct TabBar {
+		
+		public var image = Image(systemName: "lightbulb")
+		
+		public var selectedImage = Image(systemName: "lightbulb.fill")
+	}
 }

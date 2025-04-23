@@ -1,41 +1,42 @@
 //
 //  SegmentedView.swift
-//  wishkit-ios
+//  FLFeatureReequest
 //
-//  Created by Martin Lasek on 9/15/23.
-//  Copyright © 2023 Martin Lasek. All rights reserved.
+//  Created by Francesco Leoni on 9/15/23.
+//  Copyright © 2025 Francesco Leoni. All rights reserved.
 //
 
 import SwiftUI
 
 struct SegmentedView: View {
-	
+
 	@Binding
-	var selectedWishState: WishState
-	
+	var selectedFeatureState: FeatureState
+
 	var body: some View {
-		if WishKit.config.buttons.segmentedControl.display == .show {
-			Picker("", selection: $selectedWishState) {
-				ForEach([WishState.approved, WishState.implemented]) { state in
+		if FLFeatureRequest.config.buttons.segmentedControl.display == .show {
+			Picker("", selection: $selectedFeatureState) {
+				ForEach([FeatureState.approved, FeatureState.implemented]) { state in
 					Text(state.description)
 				}
-			}.pickerStyle(.segmented)
+			}
+			.pickerStyle(.segmented)
 		}
 	}
 }
 
-extension WishState: Identifiable {
+extension FeatureState: Identifiable {
 	public var id: Self { self }
-	
+
 	@MainActor
 	public var description: String {
 		switch self {
 		case .approved:
-			return WishKit.config.localization.approved
+			return FLFeatureRequest.config.localization.approved
 		case .implemented:
-			return WishKit.config.localization.implemented
+			return FLFeatureRequest.config.localization.implemented
 		case .pending:
-			return WishKit.config.localization.pending
+			return FLFeatureRequest.config.localization.pending
 		default:
 			return ""
 		}

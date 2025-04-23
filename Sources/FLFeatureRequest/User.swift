@@ -1,14 +1,15 @@
 //
 //  User.swift
-//  wishkit-ios
+//  FLFeatureRequest
 //
-//  Created by Martin Lasek on 8/5/23.
-//  Copyright © 2023 Martin Lasek. All rights reserved.
+//  Created by Francesco Leoni on 8/4/25.
+//  Copyright © 2025 Francesco Leoni. All rights reserved.
 //
 
 import Foundation
 
 final class User {
+	
 	var customID: String?
 	var email: String?
 	var name: String?

@@ -1,18 +1,18 @@
 //
 //  Config+VoteButton.swift
-//  wishkit-ios
+//  FLFeatureReequest
 //
-//  Created by Martin Lasek on 4/25/23.
-//  Copyright © 2023 Martin Lasek. All rights reserved.
+//  Created by Francesco Leoni on 4/25/23.
+//  Copyright © 2025 Francesco Leoni. All rights reserved.
 //
 
 import SwiftUI
 
 extension Configuration {
-    public struct VoteButton {
-
-        public var arrowColor: Theme.Scheme = .setBoth(to: .gray)
-        
-        public var textColor: Theme.Scheme = .set(light: .black, dark: .white)
-    }
+	public struct VoteButton {
+		
+		public var arrowColor: Theme.Scheme = .setBoth(to: .gray)
+		
+		public var textColor: Theme.Scheme = .set(light: .black, dark: .white)
+	}
 }

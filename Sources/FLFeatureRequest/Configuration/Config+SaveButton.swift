@@ -1,16 +1,16 @@
 //
 //  Config+Save.swift
-//  wishkit-ios
+//  FLFeatureReequest
 //
-//  Created by Martin Lasek on 7/29/23.
-//  Copyright © 2023 Martin Lasek. All rights reserved.
+//  Created by Francesco Leoni on 7/29/23.
+//  Copyright © 2025 Francesco Leoni. All rights reserved.
 //
 
 import SwiftUI
 
 extension Configuration {
-    public struct SaveButton {
-        
-        public var textColor = Theme.Scheme(light: .black, dark: .white)
-    }
+	public struct SaveButton {
+		
+		public var textColor = Theme.Scheme(light: .black, dark: .white)
+	}
 }

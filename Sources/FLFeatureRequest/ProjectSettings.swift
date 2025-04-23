@@ -1,17 +1,17 @@
 //
 //  ProjectSettings.swift
-//  wishkit-ios
+//  FLFeatureReequest
 //
-//  Created by Martin Lasek on 2/10/23.
-//  Copyright © 2023 Martin Lasek. All rights reserved.
+//  Created by Francesco Leoni on 2/10/23.
+//  Copyright © 2025 Francesco Leoni. All rights reserved.
 //
 
 import Foundation
 
 struct ProjectSettings {
-    static var apiUrl: String {
-        let wishKitUrl = ProcessInfo.processInfo.environment["wishkit-url"]
-        return wishKitUrl ?? "https://www.wishkit.io/api"
-    }
-    static let sdkVersion = "4.1.0"
+	static var apiUrl: String {
+		let featureRequestUrl = ProcessInfo.processInfo.environment["featurerequest-url"]
+		return featureRequestUrl ?? "https://featurerequest.com/api"
+	}
+	static let sdkVersion = "4.1.0"
 }

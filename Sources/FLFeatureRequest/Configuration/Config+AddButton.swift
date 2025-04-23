@@ -1,30 +1,30 @@
 //
 //  Config+AddButton.swift
-//  wishkit-ios
+//  FLFeatureReequest
 //
-//  Created by Martin Lasek on 4/25/23.
-//  Copyright © 2023 Martin Lasek. All rights reserved.
+//  Created by Francesco Leoni on 4/25/23.
+//  Copyright © 2025 Francesco Leoni. All rights reserved.
 //
 
 import SwiftUI
 
 extension Configuration {
-    public struct AddButton {
 
-        public var textColor = Theme.Scheme(light: .black, dark: .white)
+	public struct AddButton {
 
-        public var bottomPadding: Padding
+		public var textColor = Theme.Scheme(light: .black, dark: .white)
+		public var bottomPadding: Padding
 
-        init(bottomPadding: Padding = .small) {
-            self.bottomPadding = bottomPadding
-        }
-    }
+		init(bottomPadding: Padding = .small) {
+			self.bottomPadding = bottomPadding
+		}
+	}
 }
 
 extension Configuration.AddButton {
-    public enum Padding {
-        case small
-        case medium
-        case large
-    }
+	public enum Padding {
+		case small
+		case medium
+		case large
+	}
 }

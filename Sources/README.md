@@ -4,15 +4,20 @@
 
 ### Show list
 ```
-FeedbackListView()
+FeatureListView()
 ```
 
-### Set user ID
+### Set the user id
 ```
-WishKit.updateUser(customID: Purchases.shared.appUserID)
+FLFeatureRequest.updateUser(customID: String)
 ```
 
-### Set the product a user has purchased
+### Set the StoreKit product a user has purchased
 ```
-WishKitView.setPurchase(userID: purchases.appUserID, product: activeProduct?.skProduct)
+FLFeatureRequest.setPurchase(userID: String, product: SKProduct)
+```
+
+### Override the default Firebase APIs
+```
+FLFeatureRequest.configure(api: FLFeatureRequestApiInterface)
 ```

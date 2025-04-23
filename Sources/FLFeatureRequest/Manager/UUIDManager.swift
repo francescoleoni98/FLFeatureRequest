@@ -1,16 +1,16 @@
 //
 //  UUIDManager.swift
-//  wishkit-ios
+//  FLFeatureReequest
 //
-//  Created by Martin Lasek on 2/10/23.
-//  Copyright © 2023 Martin Lasek. All rights reserved.
+//  Created by Francesco Leoni on 2/10/23.
+//  Copyright © 2025 Francesco Leoni. All rights reserved.
 //
 
 import Foundation
 
 struct UUIDManager {
 
-	private static let slug = "wishkit"
+	private static let slug = "featurerequestkit"
 
 	private static let userUUIDKey = "\(slug)-user-uuid"
 

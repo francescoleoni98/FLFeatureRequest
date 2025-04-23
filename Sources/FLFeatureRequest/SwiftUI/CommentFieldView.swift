@@ -1,9 +1,9 @@
 //
 //  SwiftUIView.swift
-//  wishkit-ios
+//  FLFeatureReequest
 //
-//  Created by Martin Lasek on 8/14/23.
-//  Copyright © 2023 Martin Lasek. All rights reserved.
+//  Created by Francesco Leoni on 8/14/23.
+//  Copyright © 2025 Francesco Leoni. All rights reserved.
 //
 
 import SwiftUI
@@ -33,7 +33,7 @@ struct CommentFieldView: View {
 
     var body: some View {
         ZStack {
-            TextField(WishKit.config.localization.writeAComment, text: $textFieldValue)
+            TextField(FLFeatureRequest.config.localization.writeAComment, text: $textFieldValue)
                 .textFieldStyle(.plain)
                 .font(.footnote)
                 .padding([.top, .leading, .bottom], 15)
@@ -58,7 +58,7 @@ struct CommentFieldView: View {
                             .padding(10)
                     }
                     .buttonStyle(.plain)
-                    .foregroundColor(WishKit.theme.primaryColor)
+                    .foregroundColor(FLFeatureRequest.theme.primaryColor)
                     .disabled(textFieldValue.replacingOccurrences(of: " ", with: "").isEmpty)
                 }
             }
@@ -71,19 +71,19 @@ extension CommentFieldView {
     var textColor: Color {
         switch colorScheme {
         case .light:
-            if let color = WishKit.theme.textColor {
+            if let color = FLFeatureRequest.theme.textColor {
                 return color.light
             }
 
             return .black
         case .dark:
-            if let color = WishKit.theme.textColor {
+            if let color = FLFeatureRequest.theme.textColor {
                 return color.dark
             }
 
             return .white
 				@unknown default:
-					if let color = WishKit.theme.textColor {
+					if let color = FLFeatureRequest.theme.textColor {
 							return color.light
 					}
 
@@ -94,19 +94,19 @@ extension CommentFieldView {
     var backgroundColor: Color {
         switch colorScheme {
         case .light:
-            if let color = WishKit.theme.secondaryColor {
+            if let color = FLFeatureRequest.theme.secondaryColor {
                 return color.light
             }
 
             return PrivateTheme.elementBackgroundColor.light
         case .dark:
-            if let color = WishKit.theme.secondaryColor {
+            if let color = FLFeatureRequest.theme.secondaryColor {
                 return color.dark
             }
 
             return PrivateTheme.elementBackgroundColor.dark
 				@unknown default:
-					if let color = WishKit.theme.secondaryColor {
+					if let color = FLFeatureRequest.theme.secondaryColor {
 							return color.light
 					}
 
