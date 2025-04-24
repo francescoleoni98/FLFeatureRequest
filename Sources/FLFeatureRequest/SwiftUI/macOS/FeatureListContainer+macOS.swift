@@ -11,6 +11,9 @@ import SwiftUI
 
 struct FeatureListContainer: View {
 
+	@Environment(\.dismiss)
+	private var dismiss
+
 	@Environment(\.colorScheme)
 	private var colorScheme
 
@@ -23,8 +26,11 @@ struct FeatureListContainer: View {
 	@ObservedObject
 	private var featureModel: FeatureModel
 
-	init(featureModel: FeatureModel) {
+	var showDismissButton: Bool
+
+	init(featureModel: FeatureModel, showDismissButton: Bool) {
 		self.featureModel = featureModel
+		self.showDismissButton = showDismissButton
 		self.featureModel.fetchList()
 	}
 
@@ -48,9 +54,17 @@ struct FeatureListContainer: View {
 
 			FeaturesListView(featureModel: featureModel, listType: $listType)
 				.background(systemBackgroundColor)
-
 		}
 		.background(systemBackgroundColor)
+		.toolbar {
+			ToolbarItem(placement: .cancellationAction) {
+				if showDismissButton {
+					Button(String(localized: "Cancel", bundle: .module)) {
+						dismiss()
+					}
+				}
+			}
+		}
 	}
 
 	var segmentedControlView: some View {

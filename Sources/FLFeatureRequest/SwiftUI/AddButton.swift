@@ -17,7 +17,6 @@ struct AddButton: View {
 	private var showingSheet = false
 
 	private let size: CGSize
-
 	private let buttonAction: () -> ()
 
 	init(size: CGSize = CGSize(width: 45, height: 45), buttonAction: (() -> ())? = nil) {
@@ -28,28 +27,34 @@ struct AddButton: View {
 	var body: some View {
 #if os(macOS) || os(visionOS)
 		Button(action: buttonAction) {
-			Image(systemName: "plus")
-				.font(.system(size: 22, weight: .bold))
-				.frame(width: size.width, height: size.height)
-				.foregroundColor(addButtonTextColor)
-				.background(FLFeatureRequest.theme.primaryColor)
-				.clipShape(.circle)
+			HStack {
+				Image(systemName: "plus")
+					.font(.system(size: 22, weight: .bold))
+					.background(FLFeatureRequest.theme.primaryColor)
+
+				Text(FLFeatureRequest.config.localization.submit)
+					.bold()
+			}
+			.foregroundColor(addButtonTextColor)
 		}
+		.padding()
 		.buttonStyle(.plain)
 		.buttonStyle(.roundButtonStyle)
-		.frame(width: size.width, height: size.height)
 		.background(FLFeatureRequest.theme.primaryColor)
-		.clipShape(.circle)
+		.clipShape(.capsule)
 		.shadow(color: .black.opacity(0.33), radius: 5, x: 0, y: 5)
 #else
-		VStack {
+		HStack {
 			Image(systemName: "plus")
 				.font(.system(size: 22, weight: .bold))
-				.foregroundColor(addButtonTextColor)
+
+			Text(FLFeatureRequest.config.localization.submit)
+				.bold()
 		}
-		.frame(width: size.width, height: size.height)
+		.foregroundColor(addButtonTextColor)
+		.padding()
 		.background(FLFeatureRequest.theme.primaryColor)
-		.clipShape(.circle)
+		.clipShape(.capsule)
 		.shadow(color: .black.opacity(1/4), radius: 3, x: 0, y: 3)
 #endif
 	}
@@ -79,5 +84,11 @@ struct RoundButtonStyle: ButtonStyle {
 extension ButtonStyle where Self == RoundButtonStyle {
 	static var roundButtonStyle: RoundButtonStyle {
 		RoundButtonStyle()
+	}
+}
+
+#Preview {
+	AddButton {
+
 	}
 }

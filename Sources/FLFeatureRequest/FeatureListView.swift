@@ -10,33 +10,28 @@ import SwiftUI
 /// FeatureListView that renders the list of feedback.
 public struct FeatureListView: View {
 
-	@Environment(\.dismiss) var dismiss
+	private let featureModel = FeatureModel()
 
-	let featureModel = FeatureModel()
+	var showDismissButton: Bool
 
-	public init () { }
+	public init(showDismissButton: Bool = true) {
+		self.showDismissButton = showDismissButton
+	}
 
 	public var body: some View {
 		list
-			.navigationTitle("Request a feature")
-			.toolbar {
-				ToolbarItem(placement: .cancellationAction) {
-					Button("Cancel") {
-						dismiss()
-					}
-				}
-			}
+			.navigationTitle(String(localized: "Request a feature", bundle: .module))
 	}
 
 	var list: some View {
 #if os(macOS) || os(visionOS)
-		FeatureListContainer(featureModel: featureModel)
+		FeatureListContainer(featureModel: featureModel, showDismissButton: showDismissButton)
 			.frame(width: 500, height: 400)
 #else
-		FeatureListViewIOS(featureModel: featureModel)
+		FeatureListViewIOS(featureModel: featureModel, showDismissButton: showDismissButton)
 			.navigationBarTitleDisplayMode(.inline)
-			.task {
-				await featureModel.fetchList()
+			.onAppear {
+				featureModel.fetchList()
 			}
 #endif
 	}

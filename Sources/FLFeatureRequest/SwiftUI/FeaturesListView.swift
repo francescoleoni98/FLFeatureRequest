@@ -43,7 +43,6 @@ struct FeaturesListView: View {
 	
 	var body: some View {
 		ZStack {
-			
 			if featureModel.isLoading && !featureModel.hasFetched {
 				ProgressView()
 					.imageScale(.small)
@@ -52,15 +51,28 @@ struct FeaturesListView: View {
 			if featureModel.hasFetched && !featureModel.isLoading && getList().isEmpty {
 				Text(FLFeatureRequest.config.localization.noFeatureRequests)
 			}
-			
+
+			if listType == .approved {
+				Text("Vote (▲) the feature you want to see on the app or add a new one.", bundle: .module)
+					.font(.footnote)
+					.frame(maxWidth: .infinity, alignment: .leading)
+			}
+
 			if getList().count > 0 {
-				SwiftUI.List(getList(), id: \.id) { feature in
-					Button(action: { selectFeature(feature: feature) }) {
-						FeatureView(featureResponse: feature, viewKind: .list, voteActionCompletion: { featureModel.fetchList() })
-							.padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
+				SwiftUI.List {
+					ForEach(getList(), id: \.id) { feature in
+						Button(action: { selectFeature(feature: feature) }) {
+							FeatureView(featureResponse: feature, viewKind: .list, voteActionCompletion: { featureModel.fetchList() })
+								.padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
+						}
+						.listRowSeparatorCompat(.hidden)
+						.buttonStyle(.plain)
 					}
-					.listRowSeparatorCompat(.hidden)
-					.buttonStyle(.plain)
+
+					Text("\(FLFeatureRequest.config.localization.poweredBy) FLFeatureRequest")
+						.font(.footnote)
+						.foregroundStyle(.secondary)
+						.padding(.top)
 				}
 				.transition(.opacity)
 				.scrollIndicatorsCompat(.hidden)
@@ -75,11 +87,15 @@ struct FeaturesListView: View {
 					)
 					.frame(minWidth: 500, idealWidth: 500, minHeight: 450, maxHeight: 600)
 					.background(backgroundColor)
-				}.onAppear(perform: { featureModel.fetchList() })
+				}
+				.onAppear {
+					featureModel.fetchList()
+				}
 			}
 			
 			VStack {
 				Spacer()
+
 				HStack {
 					Spacer()
 					AddButton(buttonAction: createFeatureAction)

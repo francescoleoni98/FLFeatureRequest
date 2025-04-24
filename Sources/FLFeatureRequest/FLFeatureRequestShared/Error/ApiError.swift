@@ -15,6 +15,7 @@ public struct ApiError: Error, Codable {
 	}
 
 	public enum Reason: String, Codable, Sendable {
+
 		case requestResultedInError
 		case wrongBearerToken
 		case unknown
@@ -26,19 +27,19 @@ public struct ApiError: Error, Codable {
 		public var description: String {
 			switch self {
 			case .requestResultedInError:
-				return "Backend responded with an error."
+				return String(localized: "Backend responded with an error.", bundle: .module)
 			case .wrongBearerToken:
-				return "Wrong Bearer Token."
+				return String(localized: "Wrong Bearer Token.", bundle: .module)
 			case .unknown:
-				return "An unknown error occured."
+				return String(localized: "An unknown error occured.", bundle: .module)
 			case .couldNotCreateRequest:
-				return "Could not create request."
+				return String(localized: "Could not create request.", bundle: .module)
 			case .couldNotDecodeBackendResponse:
-				return "Could not decode backend response."
+				return String(localized: "Could not decode backend response.", bundle: .module)
 			case .missingApiHeaderKey:
-				return "Missing api header key."
+				return String(localized: "Missing api header key.", bundle: .module)
 			case .missingUUIDHeaderKey:
-				return "Missing user header key."
+				return String(localized: "Missing user header key.", bundle: .module)
 			}
 		}
 	}

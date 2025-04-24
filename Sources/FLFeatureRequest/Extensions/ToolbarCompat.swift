@@ -1,6 +1,6 @@
 //
 //  ToolbarCompat.swift
-//  
+//
 //
 //  Created by Francesco Leoni on 11/22/23.
 //  Copyright © 2025 Francesco Leoni. All rights reserved.
@@ -17,8 +17,12 @@ extension View {
 				ToolbarItem(placement: .keyboard) {
 					HStack {
 						Spacer()
-						Button(action: { UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil) }, label: { Text("Done") })
-						
+
+						Button {
+							UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+						} label: {
+							Text("Done", bundle: .module)
+						}
 					}
 				}
 			}

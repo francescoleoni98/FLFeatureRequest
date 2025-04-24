@@ -22,6 +22,8 @@ extension Configuration {
 
 		public var save: String
 
+		public var submit: String
+
 		public var title: String
 
 		public var description: String
@@ -91,6 +93,7 @@ extension Configuration {
 			implemented: String = Localization.default().implemented,
 			featurelist: String = Localization.default().featurelist,
 			save: String = Localization.default().save,
+			submit: String = Localization.default().submit,
 			title: String = Localization.default().title,
 			description: String = Localization.default().description,
 			upvote: String = Localization.default().upvote,
@@ -129,6 +132,7 @@ extension Configuration {
 			self.implemented = implemented
 			self.featurelist = featurelist
 			self.save = save
+			self.submit = submit
 			self.title = title
 			self.description = description
 			self.upvote = upvote
@@ -170,6 +174,7 @@ extension Configuration {
 				implemented: String(localized: "Implemented", bundle: .module),
 				featurelist: String(localized: "Feature Requests", bundle: .module),
 				save: String(localized: "Save", bundle: .module),
+				submit: String(localized: "Submit", bundle: .module),
 				title: String(localized: "Title", bundle: .module),
 				description: String(localized: "Description (Optional)", bundle: .module),
 				upvote: String(localized: "Upvote", bundle: .module),

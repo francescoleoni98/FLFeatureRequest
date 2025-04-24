@@ -130,7 +130,7 @@ struct CreateFeatureView: View {
 								Spacer()
 							}
 							
-							TextField("Email", text: $emailText)
+							TextField(String(localized: "Email", bundle: .module), text: $emailText)
 								.padding(10)
 								.textFieldStyle(.plain)
 								.foregroundColor(textColor)
@@ -144,7 +144,7 @@ struct CreateFeatureView: View {
 #endif
 					
 					FLButton(
-						text: FLFeatureRequest.config.localization.save,
+						text: FLFeatureRequest.config.localization.submit,
 						action: submitAction,
 						style: .primary,
 						isLoading: $isButtonLoading,
@@ -152,7 +152,6 @@ struct CreateFeatureView: View {
 					)
 					.disabled(isButtonDisabled)
 					.alert(isPresented: $alertModel.showAlert) {
-						
 						switch alertModel.alertReason {
 						case .successfullyCreated:
 							let button = Alert.Button.default(

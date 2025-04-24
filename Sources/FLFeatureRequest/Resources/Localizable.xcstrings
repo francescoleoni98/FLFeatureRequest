@@ -21,6 +21,16 @@
         }
       }
     },
+    "%@ FLFeatureRequest" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ FLFeatureRequest"
+          }
+        }
+      }
+    },
     "Admin" : {
       "localizations" : {
         "it" : {
@@ -31,12 +41,32 @@
         }
       }
     },
+    "An unknown error occured." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Errore sconosciuto."
+          }
+        }
+      }
+    },
     "Approved" : {
       "localizations" : {
         "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Approvate"
+          }
+        }
+      }
+    },
+    "Backend responded with an error." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il server ha risposto con un errore."
           }
         }
       }
@@ -81,6 +111,26 @@
         }
       }
     },
+    "Could not create request." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossibile creare la richiesta."
+          }
+        }
+      }
+    },
+    "Could not decode backend response." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossibile decodificare la risposta."
+          }
+        }
+      }
+    },
     "Create Feature" : {
       "localizations" : {
         "it" : {
@@ -97,17 +147,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Descrivi la funzionalità"
-          }
-        }
-      }
-    },
-    "Description" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Descrizione"
           }
         }
       }
@@ -218,6 +257,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Carica funzionalità"
+          }
+        }
+      }
+    },
+    "Missing api header key." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Manca la chiave api nell’header."
+          }
+        }
+      }
+    },
+    "Missing user header key." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Manca la chiave utente nell’header"
           }
         }
       }
@@ -342,6 +401,16 @@
         }
       }
     },
+    "Submit" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invia"
+          }
+        }
+      }
+    },
     "Successfully created" : {
       "localizations" : {
         "it" : {
@@ -403,7 +472,14 @@
       }
     },
     "Vote (▲) the feature you want to see on the app or add a new one." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vota (▲) la funzionalità che vuoi vedere nell’app o inviane una nuova."
+          }
+        }
+      }
     },
     "Votes" : {
       "localizations" : {
@@ -421,6 +497,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Scrivi un commento…"
+          }
+        }
+      }
+    },
+    "Wrong Bearer Token." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Token non valido."
           }
         }
       }

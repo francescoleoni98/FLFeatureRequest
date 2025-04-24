@@ -36,6 +36,8 @@ struct FeatureListViewIOS: View {
 	@State
 	var selectedFeature: FeatureResponse? = nil
 
+	var showDismissButton: Bool
+
 	private var isInTabBar: Bool {
 		let rootViewController = if #available(iOS 15, *) {
 			UIApplication
@@ -85,7 +87,7 @@ struct FeatureListViewIOS: View {
 				Text(FLFeatureRequest.config.localization.noFeatureRequests)
 			}
 
-			ScrollView {
+			ScrollView(showsIndicators: false) {
 				VStack {
 					if FLFeatureRequest.config.buttons.segmentedControl.display == .show {
 						Spacer(minLength: 15)
@@ -97,7 +99,7 @@ struct FeatureListViewIOS: View {
 					Spacer(minLength: 15)
 
 					if selectedFeatureState == .approved {
-						Text("Vote (▲) the feature you want to see on the app or add a new one.")
+						Text("Vote (▲) the feature you want to see on the app or add a new one.", bundle: .module)
 							.font(.footnote)
 					}
 
@@ -120,8 +122,14 @@ struct FeatureListViewIOS: View {
 							isLoading: .constant(false),
 							size: CGSize(width: 100, height: 50)
 						)
+						.padding(.vertical)
 					}
 				}
+
+				Text("\(FLFeatureRequest.config.localization.poweredBy) FLFeatureRequest")
+					.font(.footnote)
+					.foregroundStyle(.secondary)
+					.padding(.top)
 
 				Spacer(minLength: isInTabBar ? 100 : 25)
 			}
@@ -135,17 +143,17 @@ struct FeatureListViewIOS: View {
 
 				VStack(alignment: .trailing) {
 					Spacer()
+
 					VStack {
-						NavigationLink(
-							destination: {
-								CreateFeatureView(createActionCompletion: { featureModel.fetchList() })
-							}, label: {
-								AddButton(size: CGSize(width: 60, height: 60))
-							}
-						)
-					}.padding(.bottom, addButtonBottomPadding)
-				}.padding(.trailing, 20)
-			}.frame(maxWidth: 700)
+						NavigationLink(destination: CreateFeatureView { featureModel.fetchList() }) {
+							AddButton(size: CGSize(width: 60, height: 60))
+						}
+					}
+					.padding(.bottom, addButtonBottomPadding)
+				}
+				.padding(.trailing, 20)
+			}
+			.frame(maxWidth: 700)
 		}
 		.frame(maxWidth: .infinity)
 		.background(backgroundColor)
@@ -158,7 +166,7 @@ struct FeatureListViewIOS: View {
 			}
 
 			ToolbarItem(placement: .topBarTrailing) {
-				if FLFeatureRequest.config.buttons.doneButton.display == .show {
+				if FLFeatureRequest.config.buttons.doneButton.display == .show && showDismissButton {
 					Button(FLFeatureRequest.config.localization.done) {
 						UIApplication.shared.windows.first(where: \.isKeyWindow)?.rootViewController?.dismiss(animated: true)
 					}
@@ -245,5 +253,9 @@ extension FeatureListViewIOS {
 			return PrivateTheme.systemBackgroundColor.light
 		}
 	}
+}
+
+#Preview {
+	FeatureListViewIOS(featureModel: .init())
 }
 #endif

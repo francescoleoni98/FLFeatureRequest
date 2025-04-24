@@ -73,11 +73,11 @@ struct FeatureView: View {
 				case .alreadyImplemented:
 					title = Text(FLFeatureRequest.config.localization.youCanNotVoteForAnImplementedFeature)
 				case .voteReturnedError(let error):
-					title = Text("Something went wrong during your vote. Try again later.\n\n\(error)")
+					title = Text("Something went wrong during your vote. Try again later.\n\n\(error)", bundle: .module)
 				case .none:
 					title = Text(FLFeatureRequest.config.localization.youCanNotVoteForYourOwnFeature)
 				default:
-					title = Text("Something went wrong during your vote. Try again later.")
+					title = Text("Something went wrong during your vote. Try again later.", bundle: .module)
 				}
 				
 				return Alert(title: title)

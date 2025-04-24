@@ -14,11 +14,8 @@ struct FLButton: View {
 	var colorScheme
 
 	private let text: String
-
 	private let action: () -> ()
-
 	private let style: FeatureButtonStyle
-
 	private let size: CGSize
 
 	@Binding
@@ -45,17 +42,15 @@ struct FLButton: View {
 					.scaleEffect(0.5)
 			} else {
 				Text(text)
+					.bold()
+					.padding()
+					.padding(.horizontal, 8)
 					.foregroundColor(textColor)
 					.multilineTextAlignment(.center)
-					.frame(width: size.width, height: size.height)
-					.background(getColor(for: style))
-					.clipShape(RoundedRectangle(cornerSize: CGSize(width: 5, height: 5)))
 			}
 		}
-		.buttonStyle(PlainButtonStyle())
-		.frame(width: size.width, height: size.height)
-		.background(getColor(for: style))
-		.clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+		.buttonStyle(.plain)
+		.background(getColor(for: style), in: .capsule)
 		.disabled(isLoading ?? false)
 	}
 
@@ -97,5 +92,11 @@ extension FLButton {
 	enum FeatureButtonStyle {
 		case primary
 		case secondary
+	}
+}
+
+#Preview {
+	FLButton(text: "Save") {
+
 	}
 }
