@@ -166,7 +166,7 @@ struct FeatureListViewIOS: View {
 			}
 
 			ToolbarItem(placement: .topBarTrailing) {
-				if FLFeatureRequest.config.buttons.doneButton.display == .show && showDismissButton {
+				if showDismissButton {
 					Button(FLFeatureRequest.config.localization.done) {
 						UIApplication.shared.windows.first(where: \.isKeyWindow)?.rootViewController?.dismiss(animated: true)
 					}
