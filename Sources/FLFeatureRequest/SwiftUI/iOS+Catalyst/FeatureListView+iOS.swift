@@ -254,8 +254,4 @@ extension FeatureListViewIOS {
 		}
 	}
 }
-
-#Preview {
-	FeatureListViewIOS(featureModel: .init())
-}
 #endif
