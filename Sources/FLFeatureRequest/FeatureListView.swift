@@ -27,7 +27,6 @@ public struct FeatureListView: View {
 
 	public var body: some View {
 		list
-			.navigationTitle(String(localized: "Request a feature", bundle: .module))
 	}
 
 	@ViewBuilder
@@ -45,15 +44,13 @@ public struct FeatureListView: View {
 #endif
 		} : nil
 
-		ModalContainer(title: FLFeatureRequest.config.localization.featureFeaturelist, height: 500, confirmationButton: {
+		ModalContainer(title: String(localized: "Request a feature", bundle: .module), height: 500, confirmationButton: {
 			EmptyView()
 		}, content: {
 #if os(macOS) || os(visionOS)
 		FeatureListContainer(featureModel: featureModel, showDismissButton: showDismissButton, onDismiss: onDismiss)
-//			.frame(width: 500, height: 400)
 #else
 		FeatureListViewIOS(featureModel: featureModel, showDismissButton: showDismissButton, onDismiss: onDismiss)
-//			.navigationBarTitleDisplayMode(.inline)
 			.onAppear {
 				featureModel.fetchList()
 			}
