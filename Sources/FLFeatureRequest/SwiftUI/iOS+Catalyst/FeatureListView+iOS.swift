@@ -24,8 +24,6 @@ extension View {
 
 struct FeatureListViewIOS: View {
 
-	@Environment(\.dismiss) var dismiss
-
 	@Environment(\.colorScheme)
 	private var colorScheme
 
@@ -39,7 +37,6 @@ struct FeatureListViewIOS: View {
 	var selectedFeature: FeatureResponse? = nil
 
 	var showDismissButton: Bool
-	var onDismiss: (() -> Void)? = nil
 
 	private var isInTabBar: Bool {
 		let rootViewController = if #available(iOS 15, *) {
@@ -169,13 +166,9 @@ struct FeatureListViewIOS: View {
 			}
 
 			ToolbarItem(placement: .topBarTrailing) {
-				if FLFeatureRequest.config.buttons.doneButton.display == .show && showDismissButton {
+				if showDismissButton {
 					Button(FLFeatureRequest.config.localization.done) {
-						UIApplication.shared.windows.first(where: \.isKeyWindow)?.rootViewController?.dismiss(animated: true) {
-							self.dismiss()
-						}
-
-						onDismiss?()
+						UIApplication.shared.windows.first(where: \.isKeyWindow)?.rootViewController?.dismiss(animated: true)
 					}
 				}
 			}
@@ -260,9 +253,5 @@ extension FeatureListViewIOS {
 			return PrivateTheme.systemBackgroundColor.light
 		}
 	}
-}
-
-#Preview {
-	FeatureListViewIOS(featureModel: .init(), showDismissButton: true)
 }
 #endif
