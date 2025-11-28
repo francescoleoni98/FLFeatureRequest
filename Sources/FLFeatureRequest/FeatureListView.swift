@@ -10,8 +10,7 @@ import SwiftUI
 /// FeatureListView that renders the list of feedback.
 public struct FeatureListView: View {
 
-	@Environment(\.dismiss)
-	private var dismiss
+	@Environment(\.dismiss) private var dismiss
 
 	public static var isTesting: Bool = false
 
@@ -32,16 +31,17 @@ public struct FeatureListView: View {
 	@ViewBuilder
 	var list: some View {
 		let onDismissClosure = showDismissButton ? {
+			if let onDismiss {
+				onDismiss()
+			} else {
 #if os(macOS) || os(visionOS)
-			dismiss()
-			onDismiss?()
+				dismiss()
 #else
-			UIApplication.shared.windows.first(where: \.isKeyWindow)?.rootViewController?.dismiss(animated: true) {
-				self.dismiss()
-			}
-
-			onDismiss?()
+				UIApplication.shared.windows.first(where: \.isKeyWindow)?.rootViewController?.dismiss(animated: true) {
+					self.dismiss()
+				}
 #endif
+			}
 		} : nil
 
 		ModalContainer(title: String(localized: "Request a feature", bundle: .module), height: 500, confirmationButton: {

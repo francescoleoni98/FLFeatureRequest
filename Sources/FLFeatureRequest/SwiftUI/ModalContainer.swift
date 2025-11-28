@@ -20,7 +20,7 @@ struct ModalContainer<Content: View, ConfirmationButton: View>: View {
 		VStack(spacing: 16) {
 			HStack {
 				if let onClose {
-					Button(FLFeatureRequest.config.localization.cancel) {
+					Button(FLFeatureRequest.config.localization.done) {
 						onClose()
 					}
 					.buttonStyle(SecondaryModalButtonStyle())

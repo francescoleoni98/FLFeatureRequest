@@ -164,23 +164,23 @@ struct FeatureListViewIOS: View {
 		.ignoresSafeArea(edges: [.leading, .bottom, .trailing])
 		.navigationTitle(FLFeatureRequest.config.localization.featureFeaturelist)
 		.navigationBarTitleDisplayMode(.inline)
-		.toolbar {
-			ToolbarItem(placement: .topBarLeading) {
-				getRefreshButton()
-			}
-
-			ToolbarItem(placement: .topBarTrailing) {
-				if showDismissButton {
-					Button(FLFeatureRequest.config.localization.done) {
-						UIApplication.shared.windows.first(where: \.isKeyWindow)?.rootViewController?.dismiss(animated: true) {
-							self.dismiss()
-						}
-
-						onDismiss?()
-					}
-				}
-			}
-		}
+//		.toolbar {
+//			ToolbarItem(placement: .topBarLeading) {
+//				getRefreshButton()
+//			}
+//
+//			ToolbarItem(placement: .topBarTrailing) {
+//				if showDismissButton {
+//					Button(FLFeatureRequest.config.localization.done) {
+//						UIApplication.shared.windows.first(where: \.isKeyWindow)?.rootViewController?.dismiss(animated: true) {
+//							self.dismiss()
+//						}
+//
+//						onDismiss?()
+//					}
+//				}
+//			}
+//		}
 	}
 
 	// MARK: - View
