@@ -30,7 +30,7 @@ public struct FeatureListView: View {
 
 	@ViewBuilder
 	var list: some View {
-		let onDismissClosure = showDismissButton ? {
+		let onDismissClosure: (() -> Void)? = showDismissButton ? {
 			if let onDismiss {
 				onDismiss()
 			} else {
