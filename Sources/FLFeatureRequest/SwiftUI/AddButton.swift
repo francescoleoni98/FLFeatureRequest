@@ -29,20 +29,17 @@ struct AddButton: View {
 		Button(action: buttonAction) {
 			HStack {
 				Image(systemName: "plus")
-					.font(.system(size: 22, weight: .bold))
-					.background(FLFeatureRequest.theme.primaryColor)
+					.font(.system(size: 20, weight: .medium))
 
 				Text(FLFeatureRequest.config.localization.submit)
-					.bold()
+					.fontWeight(.medium)
 			}
 			.foregroundColor(addButtonTextColor)
+			.padding(12)
+			.padding(.horizontal, 8)
+			.background(FLFeatureRequest.theme.primaryColor, in: .capsule)
 		}
-		.padding()
 		.buttonStyle(.plain)
-		.buttonStyle(.roundButtonStyle)
-		.background(FLFeatureRequest.theme.primaryColor)
-		.clipShape(.capsule)
-		.shadow(color: .black.opacity(0.33), radius: 5, x: 0, y: 5)
 #else
 		HStack {
 			Image(systemName: "plus")

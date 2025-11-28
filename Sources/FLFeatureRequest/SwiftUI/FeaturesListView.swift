@@ -52,32 +52,32 @@ struct FeaturesListView: View {
 				Text(FLFeatureRequest.config.localization.noFeatureRequests)
 			}
 
-			if listType == .approved {
-				Text("Vote (▲) the feature you want to see on the app or add a new one.", bundle: .module)
-					.font(.footnote)
-					.frame(maxWidth: .infinity, alignment: .leading)
-			}
-
 			if getList().count > 0 {
 				SwiftUI.List {
-					ForEach(getList(), id: \.id) { feature in
-						Button(action: { selectFeature(feature: feature) }) {
-							FeatureView(featureResponse: feature, viewKind: .list, voteActionCompletion: { featureModel.fetchList() })
-								.padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
+					Section(String(localized: "Vote (▲) the feature you want to see on the app or add a new one.", bundle: .module)) {
+						LazyVStack(spacing: 8) {
+							ForEach(getList(), id: \.id) { feature in
+								Button(action: { selectFeature(feature: feature) }) {
+									FeatureView(featureResponse: feature, viewKind: .list, voteActionCompletion: { featureModel.fetchList() })
+//										.padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
+								}
+								.listRowSeparatorCompat(.hidden)
+								.buttonStyle(.plain)
+							}
 						}
-						.listRowSeparatorCompat(.hidden)
-						.buttonStyle(.plain)
+						.padding(.vertical, 4)
 					}
 
 					Text("\(FLFeatureRequest.config.localization.poweredBy) FLFeatureRequest")
 						.font(.footnote)
 						.foregroundStyle(.secondary)
 						.padding(.top)
+						.padding(.bottom, 30)
 				}
 				.transition(.opacity)
 				.scrollIndicatorsCompat(.hidden)
 				.scrollContentBackgroundCompat(.hidden)
-				.listStyle(PlainListStyle())
+				.listStyle(.plain)
 				.background(.clear)
 				.sheet(item: $selectedFeature, onDismiss: { featureModel.fetchList() }) { feature in
 					DetailFeatureView(
@@ -99,7 +99,7 @@ struct FeaturesListView: View {
 				HStack {
 					Spacer()
 					AddButton(buttonAction: createFeatureAction)
-						.padding([.bottom, .trailing], 20)
+						.padding(.bottom, 20)
 						.sheet(isPresented: $showingCreateSheet) {
 							CreateFeatureView(
 								createActionCompletion: { featureModel.fetchList() },

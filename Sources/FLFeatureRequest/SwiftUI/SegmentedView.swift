@@ -21,6 +21,7 @@ struct SegmentedView: View {
 				}
 			}
 			.pickerStyle(.segmented)
+			.tint(FLFeatureRequest.theme.primaryColor)
 		}
 	}
 }

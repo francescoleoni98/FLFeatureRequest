@@ -112,10 +112,11 @@ struct FeatureListViewIOS: View {
 								DetailFeatureView(featureResponse: feature, voteActionCompletion: { featureModel.fetchList() })
 							}, label: {
 								FeatureView(featureResponse: feature, viewKind: .list, voteActionCompletion: { featureModel.fetchList() })
-									.padding(.all, 5)
+									.padding(5)
 									.frame(maxWidth: 700)
 							})
-						}.transition(.opacity)
+						}
+						.transition(.opacity)
 					} else if !featureModel.hasFetched {
 						FLButton(
 							text: String(localized: "Load features", bundle: .module), action: {

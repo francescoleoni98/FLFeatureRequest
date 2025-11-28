@@ -43,14 +43,14 @@ struct FLButton: View {
 			} else {
 				Text(text)
 					.bold()
-					.padding()
+					.padding(12)
 					.padding(.horizontal, 8)
 					.foregroundColor(textColor)
 					.multilineTextAlignment(.center)
+					.background(getColor(for: style), in: .capsule)
 			}
 		}
 		.buttonStyle(.plain)
-		.background(getColor(for: style), in: .capsule)
 		.disabled(isLoading ?? false)
 	}
 

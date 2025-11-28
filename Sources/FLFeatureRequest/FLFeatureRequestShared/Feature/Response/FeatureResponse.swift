@@ -24,8 +24,8 @@ public class FeatureResponse: Codable {
     title: String,
     description: String,
     state: FeatureState,
-    votingUsers: [UserResponse],
-    commentList: [CommentResponse]
+    votingUsers: [UserResponse] = [],
+    commentList: [CommentResponse] = []
   ) {
     self.id = id
     self.userUUID = userUUID

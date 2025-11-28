@@ -87,7 +87,7 @@ struct FeatureView: View {
 				HStack {
 					Text(featureResponse.title)
 						.foregroundColor(textColor)
-						.font(.system(size: 17, weight: .medium))
+						.font(.body)
 						.fontWeight(.semibold)
 						.multilineTextAlignment(.leading)
 						.lineLimit(viewKind == .list ? 1 : nil)
@@ -96,11 +96,11 @@ struct FeatureView: View {
 					
 					if viewKind == .list && FLFeatureRequest.config.statusBadge == .show {
 						Text(featureResponse.state.description.uppercased())
-							.opacity(0.8)
-							.font(.system(size: 11, weight: .medium))
+							.font(.footnote)
+							.fontWeight(.medium)
 							.padding(EdgeInsets(top: 3, leading: 5, bottom: 3, trailing: 5))
-							.foregroundColor(.primary)
-							.background(badgeColor(for: featureResponse.state).opacity(1/3))
+							.foregroundColor(badgeColor(for: featureResponse.state))
+							.background(badgeColor(for: featureResponse.state).opacity(0.1))
 							.cornerRadius(6)
 					}
 				}
@@ -108,15 +108,16 @@ struct FeatureView: View {
 				HStack {
 					Text(featureResponse.description)
 						.foregroundColor(textColor)
-						.font(.system(size: 13))
+						.font(.subheadline)
 						.multilineTextAlignment(.leading)
 						.lineLimit(descriptionLineLimit)
+
 					Spacer()
 				}
 			}
 		}
 		.padding([.top, .bottom, .trailing], 10)
-		.background(backgroundColor)
+		.background(colorScheme == .dark ? .white.opacity(0.05) : .black.opacity(0.05))
 		.clipShape(RoundedRectangle(cornerRadius: FLFeatureRequest.config.cornerRadius, style: .continuous))
 		.wkShadow()
 	}

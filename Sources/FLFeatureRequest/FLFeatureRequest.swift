@@ -25,7 +25,7 @@ public enum FLFeatureRequest {
 
 	public static var config = Configuration()
 
-	public static var api: FLFeatureRequestApiInterface = DefaultApi()
+	public static var api: FLFeatureRequestApiInterface = FeatureListView.isTesting ? MockApi() : DefaultApi()
 
 	public static func configure(with apiKey: String) {
 		Self.apiKey = apiKey
@@ -35,11 +35,11 @@ public enum FLFeatureRequest {
 		Self.api = api
 	}
 
-	public static func configure(brandColor: Color) {
+	public static func configure(brandColor: Color, foregroundColor: Color = .white) {
 		//  configure(with: "<key>")
 		theme.primaryColor = brandColor
-		config.buttons.addButton.textColor = .setBoth(to: .white)
-		config.buttons.saveButton.textColor = .setBoth(to: .white)
+		config.buttons.addButton.textColor = .setBoth(to: foregroundColor)
+		config.buttons.saveButton.textColor = .setBoth(to: foregroundColor)
 		config.statusBadge = .show
 		config.commentSection = .hide
 	}

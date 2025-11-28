@@ -62,7 +62,7 @@ struct CreateFeatureView: View {
 			}
 			
 			ScrollView {
-				VStack(spacing: 15) {
+				VStack(spacing: 12) {
 					VStack(spacing: 0) {
 						HStack {
 							Text(FLFeatureRequest.config.localization.title)
@@ -95,7 +95,7 @@ struct CreateFeatureView: View {
 								.padding([.leading, .trailing], 5)
 								.padding([.top, .bottom], 10)
 								.lineSpacing(3)
-								.frame(height: 200)
+								.frame(height: 100)
 								.foregroundColor(textColor)
 								.scrollContentBackgroundCompat(.hidden)
 								.background(fieldBackgroundColor)
@@ -138,11 +138,7 @@ struct CreateFeatureView: View {
 								.clipShape(RoundedRectangle(cornerRadius: FLFeatureRequest.config.cornerRadius, style: .continuous))
 						}
 					}
-					
-#if os(macOS) || os(visionOS)
-					Spacer()
-#endif
-					
+
 					FLButton(
 						text: FLFeatureRequest.config.localization.submit,
 						action: submitAction,

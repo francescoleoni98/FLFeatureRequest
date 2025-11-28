@@ -55,25 +55,24 @@ struct FeatureListContainer: View {
 			}
 
 			FeaturesListView(featureModel: featureModel, listType: $listType)
-				.background(systemBackgroundColor)
+//				.background(systemBackgroundColor)
 		}
-		.background(systemBackgroundColor)
-		.toolbar {
-			ToolbarItem(placement: .cancellationAction) {
-				if showDismissButton {
-					Button(String(localized: "Cancel", bundle: .module)) {
-						dismiss()
-						onDismiss?()
-					}
-				}
-			}
-		}
+//		.background(systemBackgroundColor)
+//		.toolbar {
+//			ToolbarItem(placement: .cancellationAction) {
+//				if showDismissButton {
+//					Button(String(localized: "Cancel", bundle: .module)) {
+//						dismiss()
+//						onDismiss?()
+//					}
+//				}
+//			}
+//		}
 	}
 
 	var segmentedControlView: some View {
 		ZStack {
 			SegmentedView(selectedFeatureState: $listType)
-				.padding()
 				.frame(maxWidth: 300)
 
 			HStack {
@@ -86,11 +85,12 @@ struct FeatureListContainer: View {
 						Image(systemName: "arrow.clockwise")
 					}
 				}
-				.buttonStyle(PlainButtonStyle())
+				.buttonStyle(.plain)
 				.frame(width: 20, height: 20)
 				.padding(EdgeInsets(top: 0, leading: 315, bottom: 0, trailing: 0))
 			}
 		}
+		.padding(.all.subtracting(.top))
 	}
 
 	var noSegmentedControlView: some View {

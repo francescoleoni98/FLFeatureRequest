@@ -33,7 +33,9 @@ public final class FeatureModel: ObservableObject {
 	
 	@MainActor
 	public func fetchList(completion: (() -> ())? = nil) {
-		isLoading = true
+		DispatchQueue.main.async {
+			self.isLoading = true
+		}
 
 		FLFeatureRequest.api.fetchFeaturesList { result in
 			switch result {
@@ -84,3 +86,4 @@ public final class FeatureModel: ObservableObject {
 		self.implementedFeatures = filteredList
 	}
 }
+
