@@ -13,9 +13,11 @@ public struct FeatureListView: View {
 	private let featureModel = FeatureModel()
 
 	var showDismissButton: Bool
+	var onDismiss: (() -> Void)?
 
-	public init(showDismissButton: Bool = true) {
+	public init(showDismissButton: Bool = true, onDismiss: (() -> Void)? = nil) {
 		self.showDismissButton = showDismissButton
+		self.onDismiss = onDismiss
 	}
 
 	public var body: some View {
@@ -25,10 +27,10 @@ public struct FeatureListView: View {
 
 	var list: some View {
 #if os(macOS) || os(visionOS)
-		FeatureListContainer(featureModel: featureModel, showDismissButton: showDismissButton)
+		FeatureListContainer(featureModel: featureModel, showDismissButton: showDismissButton, onDismiss: onDismiss)
 			.frame(width: 500, height: 400)
 #else
-		FeatureListViewIOS(featureModel: featureModel, showDismissButton: showDismissButton)
+		FeatureListViewIOS(featureModel: featureModel, showDismissButton: showDismissButton, onDismiss: onDismiss)
 			.navigationBarTitleDisplayMode(.inline)
 			.onAppear {
 				featureModel.fetchList()

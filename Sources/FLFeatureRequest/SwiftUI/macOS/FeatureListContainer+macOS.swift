@@ -27,10 +27,12 @@ struct FeatureListContainer: View {
 	private var featureModel: FeatureModel
 
 	var showDismissButton: Bool
+	var onDismiss: (() -> Void)?
 
-	init(featureModel: FeatureModel, showDismissButton: Bool) {
+	init(featureModel: FeatureModel, showDismissButton: Bool, onDismiss: (() -> Void)? = nil) {
 		self.featureModel = featureModel
 		self.showDismissButton = showDismissButton
+		self.onDismiss = onDismiss
 		self.featureModel.fetchList()
 	}
 
@@ -61,6 +63,7 @@ struct FeatureListContainer: View {
 				if showDismissButton {
 					Button(String(localized: "Cancel", bundle: .module)) {
 						dismiss()
+						onDismiss?()
 					}
 				}
 			}
